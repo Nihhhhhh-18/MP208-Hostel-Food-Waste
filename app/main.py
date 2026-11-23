@@ -123,6 +123,17 @@ def get_model():
 
 
 # 4. Endpoints
+@app.get("/", status_code=status.HTTP_200_OK)
+def root() -> Dict[str, str]:
+    """Root endpoint welcoming users and directing to documentation."""
+    return {
+        "service": "MP208 Hostel Mess Food Waste Prediction API",
+        "health": "/health",
+        "docs": "/docs",
+        "status": "running"
+    }
+
+
 @app.get("/health", status_code=status.HTTP_200_OK)
 def health_check() -> Dict[str, str]:
     """Health check endpoint required by deployment probes and grading tool."""
