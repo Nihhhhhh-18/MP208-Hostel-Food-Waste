@@ -48,6 +48,7 @@ mlartifacts/
 data/raw/train.csv
 data/raw/later.csv
 data/*.csv
+data/processed/
 
 # Keep holdout features in git as specified
 !data/raw/holdout_features.csv
