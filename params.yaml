@@ -1,0 +1,22 @@
+data:
+  raw_train_path: "data/raw/train.csv"
+  raw_later_path: "data/raw/later.csv"
+  raw_holdout_path: "data/raw/holdout_features.csv"
+  processed_train_path: "data/processed/train_cleaned.csv"
+  processed_dir: "data/processed"
+
+model:
+  random_state: 42
+  test_size: 0.2
+  registered_model_name: "mp208-food-waste-predictor"
+  champion_alias: "champion"
+  export_path: "models/model.joblib"
+
+tracking:
+  tracking_uri: "sqlite:///mlflow.db"
+  experiment_name: "mp208-hostel-food-waste"
+
+monitoring:
+  psi_bins: 10
+  retrain_split_ratio: 0.7
+  promotion_improvement_threshold: 0.05
