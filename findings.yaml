@@ -1,62 +1,53 @@
-# MP208 findings --- fill in every value, keep every key.
-# The marking tool reads this file. Write null only where the comment says so.
-# Use the exact column names and group values from your data files.
-
-group_id: "G182"          # your group id, e.g. "G042"
-problem_id: "MP208"
-
+group_id: G182
+problem_id: MP208
 data_issues:
-  # For each of the 7 kinds: present: true or false.
-  # If present is false, leave the other values as null.
   leaking_column:
     present: true
-    column: waste_weighed_at_bin           # the column that must not be used as a feature
+    column: waste_weighed_at_bin
   unit_mixup:
     present: true
-    column: cooked_kg           # the column recorded in a different unit
-    group_value: "Boys Hostel 2"      # the value of hostel whose rows are affected
-    factor: 1000           # wrong value = right value x factor
+    column: cooked_kg
+    group_value: Boys Hostel 2
+    factor: 1000
   sentinel_value:
     present: false
     column: null
-    value: null            # the special number typed instead of a blank
-    count: null            # how many rows have it
+    value: null
+    count: null
   duplicate_rows:
     present: true
-    count: 40            # number of EXTRA copies (rows you would delete)
+    count: 40
   stuck_sensor:
     present: false
     column: null
-    start_date: null       # first date with the stuck value, YYYY-MM-DD
-    end_date: null         # last date with the stuck value, YYYY-MM-DD
+    start_date: null
+    end_date: null
   target_typos:
     present: true
-    count: 10            # rows whose target was typed 10 times too big
+    count: 10
   spelling_variants:
     present: true
     column: meal
-    true_levels: 3      # how many real categories there are after cleaning
-
+    true_levels: 3
 tracking:
-  experiment_name: "mp208-hostel-food-waste"
-  best_run_id: "87439a1b927f45e4a9869c44f23715ae"        # the MLflow run id of your v1 model
-  registered_model_name: "mp208-food-waste-predictor"
-  champion_version: 1
-
+  experiment_name: mp208-hostel-food-waste
+  best_run_id: 87439a1b927f45e4a9869c44f23715ae
+  registered_model_name: mp208-food-waste-predictor
+  champion_version: 2
 monitoring:
-  psi:                     # cleaned train.csv vs later.csv, 10 bins
-    students_registered: null
-    attendance_pct: null
-    menu_rating: null
-    temp_c: null
-    cooked_kg: null
-    plate_size_cm: null
-  most_drifted_feature: null
-  mae_by_group:            # v1 on later.csv, per value of hostel
-    'Boys Hostel 1': null
-    'Boys Hostel 2': null
-    'Girls Hostel': null
-  worst_served_group: null
-  mae_v1_on_check: null    # v1 on the last 30% of later.csv (by date)
-  mae_v2_on_check: null    # v2 on the same rows
-  decision: null           # promote or keep
+  psi:
+    students_registered: 3.5264
+    attendance_pct: 0.0234
+    menu_rating: 0.0149
+    temp_c: 0.0491
+    cooked_kg: 0.0743
+    plate_size_cm: 0.0741
+  most_drifted_feature: students_registered
+  mae_by_group:
+    Boys Hostel 1: 2.2165
+    Boys Hostel 2: 2.3514
+    Girls Hostel: 13.6387
+  worst_served_group: Girls Hostel
+  mae_v1_on_check: 7.585
+  mae_v2_on_check: 7.585
+  decision: keep
