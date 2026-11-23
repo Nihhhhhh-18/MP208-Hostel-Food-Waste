@@ -1,0 +1,17 @@
+.git
+.gitignore
+.venv
+venv
+ENV
+__pycache__
+*.py[cod]
+.pytest_cache
+mlruns
+mlartifacts
+.dvc
+.dvcignore
+data/raw/train.csv
+data/raw/later.csv
+data/*.csv
+.DS_Store
+*.md
