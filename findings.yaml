@@ -31,7 +31,7 @@ data_issues:
     true_levels: 3
 tracking:
   experiment_name: mp208-hostel-food-waste
-  best_run_id: 87439a1b927f45e4a9869c44f23715ae
+  best_run_id: 4731b1db887a4c3192e4716e454f8386
   registered_model_name: mp208-food-waste-predictor
   champion_version: 2
 monitoring:
@@ -44,10 +44,10 @@ monitoring:
     plate_size_cm: 0.0741
   most_drifted_feature: students_registered
   mae_by_group:
-    Boys Hostel 1: 2.2165
-    Boys Hostel 2: 2.3514
-    Girls Hostel: 13.6387
+    Boys Hostel 1: 3.2337
+    Boys Hostel 2: 3.4058
+    Girls Hostel: 19.5555
   worst_served_group: Girls Hostel
-  mae_v1_on_check: 7.585
+  mae_v1_on_check: 10.7151
   mae_v2_on_check: 7.585
-  decision: keep
+  decision: promote

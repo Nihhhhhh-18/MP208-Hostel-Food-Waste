@@ -80,7 +80,10 @@ def run_monitoring_and_retraining() -> Dict[str, Any]:
     most_drifted = max(psi_results, key=psi_results.get)
 
     # 3. Compute v1 MAE on later.csv by hostel group
-    v1_model = joblib.load(export_path)
+    # v1 is the baseline model trained strictly on train_clean only
+    v1_model = build_pipeline(Ridge(alpha=1.0, random_state=42))
+    v1_model.fit(train_clean[FEATURE_COLS], train_clean[TARGET_COL])
+
     mae_by_group = {}
     for hostel in ["Boys Hostel 1", "Boys Hostel 2", "Girls Hostel"]:
         sub = later_clean[later_clean["hostel"] == hostel]
